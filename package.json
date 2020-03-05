@@ -18,13 +18,14 @@
     "chai-as-promised": "^7.1.1",
     "chai-bignumber": "^3.0.0",
     "lite-server": "^2.5.4",
-    "nodemon": "^1.17.3",
-    "truffle-contract": "^4.0.31"
+    "nodemon": "^1.17.3"
   },
   "dependencies": {
     "glob": "^7.1.6",
     "jquery": "^3.4.1",
+    "node": "^13.9.0",
     "popper.js": "^1.16.0",
-    "resolve": "^1.15.1"
+    "resolve": "^1.15.1",
+    "truffle": "^5.1.15"
   }
 }
