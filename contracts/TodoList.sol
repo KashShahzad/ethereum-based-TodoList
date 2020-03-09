@@ -1,27 +1,42 @@
 pragma solidity >=0.4.21 <0.7.0;
 
 contract TodoList {
-    //First we need to keep the track of the tasks that we need in todo list
-    //we do this with the use of state variable
-    //state variables are written into BC represent the state of the SC on BC
-    //it changes anytime the this taskcount changes
-    uint public taskCount = 0;
-    //on compiling truffle will create a build and json version of this file
-    //includes the abstract binary interface and bytecode which runs on ethereum VM
-    struct Task {
-        uint id;
-        string content;
-        bool completed;
-    }
+  uint public taskCount = 0;
 
-    mapping(uint => Task) public tasks;
+  struct Task {
+    uint id;
+    string content;
+    bool completed;
+  }
 
-    constructor() public {
-        createTask("Check out this");
-    }
+  mapping(uint => Task) public tasks;
 
-    function createTask(string memory _content) public {
-        taskCount++;
-        tasks[taskCount] = Task(taskCount, _content, false);
-    }
+  event TaskCreated(
+    uint id,
+    string content,
+    bool completed
+  );
+
+  event TaskCompleted(
+    uint id,
+    bool completed
+  );
+
+  constructor() public {
+    createTask("Check out dappuniversity.com");
+  }
+
+  function createTask(string memory _content) public {
+    taskCount ++;
+    tasks[taskCount] = Task(taskCount, _content, false);
+    emit TaskCreated(taskCount, _content, false);
+  }
+
+  function toggleCompleted(uint _id) public {
+    Task memory _task = tasks[_id];
+    _task.completed = !_task.completed;
+    tasks[_id] = _task;
+    emit TaskCompleted(_id, _task.completed);
+  }
+
 }
