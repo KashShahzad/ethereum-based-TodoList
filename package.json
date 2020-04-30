@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "glob": "^7.1.6",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "node": "^13.9.0",
     "popper.js": "^1.16.0",
     "resolve": "^1.15.1",
